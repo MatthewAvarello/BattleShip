@@ -4,9 +4,10 @@
   "description": "Template Repository to save time.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest",
     "start": "webpack serve --open --config webpack.dev.js",
-    "production": "webpack --config webpack.prod.js"
+    "production": "webpack --config webpack.prod.js",
+    "format": "npx prettier --write src/"
   },
   "repository": {
     "type": "git",
@@ -20,9 +21,15 @@
   },
   "homepage": "https://github.com/MatthewAvarello/Webpack-Template#readme",
   "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/jest": "^30.0.0",
     "css-loader": "^7.1.2",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0",
     "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.3",
+    "jest": "^30.2.0",
+    "prettier": "3.6.2",
     "style-loader": "^4.0.0",
     "webpack": "^5.99.9",
     "webpack-cli": "^6.0.1",
