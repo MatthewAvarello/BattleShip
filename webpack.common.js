@@ -1,7 +1,8 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+const __dirname = import.meta.dirname;
 
-module.exports = {
+const commonConfig = {
     entry: "./src/index.js",
     output: {
         filename: "main.js",
@@ -31,3 +32,4 @@ module.exports = {
         ],
     },
 }
+export default commonConfig
