@@ -1,7 +1,8 @@
 import Ship from "./Ship.js";
 import indexOutOfBounds from "../utility/indexOutOfBounds.js";
+import Length from "../config.js"
 export default class Gameboard {
-	#length = 10;
+	#length = Length;
 	#ships = [];
 	#board = Array.from({ length: this.#length }, () =>
 		new Array(this.#length).fill(""),
