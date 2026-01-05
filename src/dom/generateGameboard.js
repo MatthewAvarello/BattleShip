@@ -8,8 +8,8 @@ export default function generateGameboard(board,locationId){
         for (let j = 0; j < BOARD_LENGTH; j++){
             let div = document.createElement("div");
             div.setAttribute("class","square")
-            div.setAttribute("data-x",j)
-            div.setAttribute("data-y",i)
+            div.setAttribute("data-x",i)
+            div.setAttribute("data-y",j)
             container.append(div)
         }
         boardDOM.append(container)
