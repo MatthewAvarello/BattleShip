@@ -32,34 +32,34 @@ test("prevents invalid placemen(out of bounds)", () => {
 	let board = gameboard.board;
 	expect(board[8][8]).toBe("");
 });
-test('prevents invalid placement(intersecting another ship)',() => {
-	gameboard.placeShip([3,7],3,"X")// 3,7 4,7 5,7
-	expect(gameboard.placeShip([4,6],3,"Y")).toBe(false)// 4,6 4,7 4,8
-})
-test("marks missed attack", () => {
-	gameboard.recieveAttack([5,5])
-	let board = gameboard.board
-	expect(board[5][5]).toBe("x")
+test("prevents invalid placement(intersecting another ship)", () => {
+	gameboard.placeShip([3, 7], 3, "X"); // 3,7 4,7 5,7
+	expect(gameboard.placeShip([4, 6], 3, "Y")).toBe(false); // 4,6 4,7 4,8
 });
-test("marks hit attack",() => {
-	gameboard.placeShip([7,5],3,"Y")
-	gameboard.recieveAttack([7,5])
-	let board = gameboard.board
-	expect(board[5][7]).toBe("X")
-})
+test("marks missed attack", () => {
+	gameboard.recieveAttack([5, 5]);
+	let board = gameboard.board;
+	expect(board[5][5]).toBe("x");
+});
+test("marks hit attack", () => {
+	gameboard.placeShip([7, 5], 3, "Y");
+	gameboard.recieveAttack([7, 5]);
+	let board = gameboard.board;
+	expect(board[5][7]).toBe("X");
+});
 test("all ships not sunk", () => {
-	gameboard.placeShip([2,3],2,"Y")
-	gameboard.placeShip([6,7],2,"X")
-	gameboard.recieveAttack([2,3])
-	gameboard.recieveAttack([2,4])
-	expect(gameboard.allSunk()).toBe(false)
-})
+	gameboard.placeShip([2, 3], 2, "Y");
+	gameboard.placeShip([6, 7], 2, "X");
+	gameboard.recieveAttack([2, 3]);
+	gameboard.recieveAttack([2, 4]);
+	expect(gameboard.allSunk()).toBe(false);
+});
 test("all ships sink", () => {
-	gameboard.placeShip([2,3],2,"Y")
-	gameboard.placeShip([6,7],2,"X")
-	gameboard.recieveAttack([2,3])
-	gameboard.recieveAttack([2,4])
-	gameboard.recieveAttack([6,7])
-	gameboard.recieveAttack([7,7])
-	expect(gameboard.allSunk()).toBe(true)
-})
+	gameboard.placeShip([2, 3], 2, "Y");
+	gameboard.placeShip([6, 7], 2, "X");
+	gameboard.recieveAttack([2, 3]);
+	gameboard.recieveAttack([2, 4]);
+	gameboard.recieveAttack([6, 7]);
+	gameboard.recieveAttack([7, 7]);
+	expect(gameboard.allSunk()).toBe(true);
+});

@@ -1,7 +1,7 @@
-export default function clearShips(board){
-    let descendants = board.querySelectorAll("*")
+export default function clearShips(board) {
+	let descendants = board.querySelectorAll("*");
 
-    descendants.forEach(element => {
-        element.style.backgroundColor = "white"
-    });
+	descendants.forEach((element) => {
+		element.style.backgroundColor = "white";
+	});
 }

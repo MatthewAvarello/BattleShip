@@ -1,8 +1,8 @@
 import Ship from "./Ship.js";
 import indexOutOfBounds from "../utility/indexOutOfBounds.js";
-import Length from "../config.js"
+import { BOARD_LENGTH } from "../config.js";
 export default class Gameboard {
-	#length = Length;
+	#length = BOARD_LENGTH;
 	#ships = [];
 	#board = Array.from({ length: this.#length }, () =>
 		new Array(this.#length).fill(""),
@@ -36,12 +36,12 @@ export default class Gameboard {
 			return false;
 		}
 		this.#ships.push(ship);
-		for (let cordPair of cords){
+		for (let cordPair of cords) {
 			let x = cordPair.x;
 			let y = cordPair.y;
-			if (this.#board[y][x] instanceof Ship){
-				console.error("Error: Attempting to place in occupied spot")
-				return false
+			if (this.#board[y][x] instanceof Ship) {
+				console.error("Error: Attempting to place in occupied spot");
+				return false;
 			}
 		}
 		cords.forEach((cordPair) => {
@@ -85,9 +85,9 @@ export default class Gameboard {
 		}
 		let target = this.#board[y][x];
 		if (target == "") {
-			this.#board[y][x] = "x"
+			this.#board[y][x] = "x";
 		} else if (target instanceof Ship == true) {
-			console.log("Condition met")
+			console.log("Condition met");
 			target.hit();
 			this.#board[y][x] = "X";
 		} else if (target == "x" || target == "X") {

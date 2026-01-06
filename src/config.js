@@ -1,2 +1,3 @@
 const BOARD_LENGTH = 10;
-export default BOARD_LENGTH;
+const SHIP_LENGTHS = [5,4,3,3,2]
+export { BOARD_LENGTH , SHIP_LENGTHS};
