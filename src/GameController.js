@@ -33,6 +33,16 @@ export default class Gamecontroller {
 				return;
 			}
 			if (
+					this.humanplayer.addShip(
+					[
+						Number(event.target.getAttribute("data-x")),
+						Number(event.target.getAttribute("data-y")),
+					],
+					this.shipsLength[this.shipsAdded],
+					rotation,
+				)
+				 != false
+			) {
 				displayShipPlacement(
 					"friendlyboard",
 					Number(event.target.getAttribute("data-x")),
@@ -40,22 +50,14 @@ export default class Gamecontroller {
 					rotation,
 					this.shipsLength[this.shipsAdded],
 					true,
-				) == true
-			) {
-				this.humanplayer.addShip(
-					[
-						Number(event.target.getAttribute("data-x")),
-						Number(event.target.getAttribute("data-y")),
-					],
-					this.shipsLength[this.shipsAdded],
-					rotation,
-				);
+				)
+				this.shipsAdded++;
+				console.log(this.shipsAdded);
+				if (this.shipsAdded >= this.shipsLength.length) {
+					this.playMatch();
+				}
 			}
-			this.shipsAdded++;
-			console.log(this.shipsAdded);
-			if (this.shipsAdded >= this.shipsLength.length) {
-				this.playMatch();
-			}
+		
 		});
 	}
 	playMatch() {
