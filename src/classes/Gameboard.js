@@ -35,7 +35,6 @@ export default class Gameboard {
 			console.error("Index out of bounds");
 			return false;
 		}
-		this.#ships.push(ship);
 		for (let cordPair of cords) {
 			let x = cordPair.x;
 			let y = cordPair.y;
@@ -44,6 +43,7 @@ export default class Gameboard {
 				return false;
 			}
 		}
+		this.#ships.push(ship);
 		cords.forEach((cordPair) => {
 			let x = cordPair.x;
 			let y = cordPair.y;

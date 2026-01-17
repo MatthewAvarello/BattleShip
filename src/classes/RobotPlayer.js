@@ -24,4 +24,16 @@ export default class RobotPlayer extends Player {
 		}
 		//console.table(this.playerBoard.board);
 	}
+	attack(playerBoard){
+		let successfulattack = false
+
+		while (successfulattack != true){
+			let y = Math.floor(Math.random() * BOARD_LENGTH)
+			let x = Math.floor(Math.random() * BOARD_LENGTH)
+			if (playerBoard.recieveAttack([x,y]) != false){
+				successfulattack = true
+			}
+
+		}
+	}
 }
