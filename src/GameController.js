@@ -42,6 +42,7 @@ export default class GameController {
 					],
 					this.shipsLength[this.shipsAdded],
 					rotation,
+					this.shipsAdded,
 				)
 				 != false
 			) {
@@ -65,7 +66,7 @@ export default class GameController {
 	playMatch() {
 		console.log("condition met");
 		this.humanplayer.playerBoard.logBoard();
-		this.robotplayer.addShip()
+		this.robotplayer.addShip(0)
 		let robotBoardDom = document.querySelector("#enemyboard")
 		let playerBoardDom = document.querySelector("#friendlyboard")
 		let playerBoard = this.humanplayer.playerBoard
@@ -80,8 +81,42 @@ export default class GameController {
 			if (robotBoard.recieveAttack([Number(event.target.getAttribute("data-x")),Number(event.target.getAttribute("data-y"))]) == false){
 				return;
 			}
-			console.log(robotBoard.ships)
+			//console.log(robotBoard.ships)
 			displayAttacks(robotBoardDom,robotBoard)
+			let cordtoship = playerBoard.cordToShip
+			let sunkById = playerBoard.sunkById()
+			console.log("Begin:")
+			console.log(cordtoship)
+			console.log(sunkById)
+			console.log(robotBoard.cordToShip)
+			console.log(robotBoard.sunkById())
+			if (robotBoard.sunkById().length){
+				let sunkIds = robotBoard.sunkById()
+				sunkIds.forEach(id => {
+				    if (robotBoard.cordToShip.forEach(array => {
+						if (array.find((element) => element == id)){
+							return true
+						}
+					})){
+						let properarray;
+						robotBoard.cordToShip.forEach(array => {
+							properarray = array.find((element) => element == id)
+						})
+						properarray[1].forEach(cordobject => {
+							let x = cordobject.x;
+							let y = cordobject.y;
+							let targetDiv = document.querySelector(
+								`div[data-x='${x}'][data-y='${y + i}']`,
+							);
+							targetDiv.style.backgroundColor = "red";
+						})
+					}
+				});
+			}
+
+
+
+
 			if (robotBoard.allSunk() == true){
 				alert('Player Won!')
 				console.log("PlayerWon!")

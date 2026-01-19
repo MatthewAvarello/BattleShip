@@ -1,8 +1,9 @@
 export default class Ship {
 	#timesHit = 0;
 	#sunk = false;
-	constructor(length) {
+	constructor(length,id) {
 		this.length = length;
+		this.id = id;
 	}
 
 	get timesHit() {

@@ -7,8 +7,9 @@ export default class RobotPlayer extends Player {
 		this.shipsAdded = 0;
 	}
 
-	addShip() {
+	addShip(id) {
 		let axis;
+		let test = id;
 		while (this.shipsAdded <= 4) {
 			let num = Math.random()
 			if(num > 0.5){
@@ -16,11 +17,12 @@ export default class RobotPlayer extends Player {
 			} else {
 				axis = "X"
 			}
-			if (this.playerBoard.placeShip([Math.floor(Math.random() * BOARD_LENGTH + 1),Math.floor(Math.random() * BOARD_LENGTH + 1)],SHIP_LENGTHS[this.shipsAdded],axis) == false){
+			if (this.playerBoard.placeShip([Math.floor(Math.random() * BOARD_LENGTH + 1),Math.floor(Math.random() * BOARD_LENGTH + 1)],SHIP_LENGTHS[this.shipsAdded],axis,test) == false){
 				console.log("Random attemp failed. Trying again.")
 				continue;
 			}
 			this.shipsAdded++;
+			test++
 		}
 		//console.table(this.playerBoard.board);
 	}

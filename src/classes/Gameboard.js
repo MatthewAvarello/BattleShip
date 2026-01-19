@@ -7,6 +7,11 @@ export default class Gameboard {
 	#board = Array.from({ length: this.#length }, () =>
 		new Array(this.#length).fill(""),
 	);
+	#cordToShip = []
+
+	get cordToShip(){
+		return this.#cordToShip
+	}
 
 	get ships() {
 		return this.#ships;
@@ -20,9 +25,10 @@ export default class Gameboard {
 		console.table(this.#board);
 	}
 
-	placeShip(startCords, length, axis) {
+	placeShip(startCords, length, axis, id) {
+		console.log(id)
 		let cords;
-		let ship = new Ship(length);
+		let ship = new Ship(length,id);
 		if (axis == "Y") {
 			cords = this.placeYAxis(startCords, length);
 		} else if (axis == "X") {
@@ -49,6 +55,7 @@ export default class Gameboard {
 			let y = cordPair.y;
 			this.#board[y][x] = ship;
 		});
+		this.#cordToShip.push([id,cords])
 	}
 
 	placeYAxis(startCords, length) {
@@ -94,6 +101,16 @@ export default class Gameboard {
 			console.error("Invalid attack. You have already shot here before");
 			return false;
 		}
+	}
+
+	sunkById(){
+		let ids = []
+		for (const ship of this.#ships) {
+			if (ship.sunk == true) {
+				ids.push(ship.id)
+			}
+		}
+		return ids;
 	}
 
 	allSunk() {
