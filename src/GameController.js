@@ -93,24 +93,39 @@ export default class GameController {
 			if (robotBoard.sunkById().length){
 				let sunkIds = robotBoard.sunkById()
 				sunkIds.forEach(id => {
-				    if (robotBoard.cordToShip.forEach(array => {
-						if (array.find((element) => element == id)){
-							return true
+				    robotBoard.cordToShip.forEach(array => {
+						if (!array.find((element) => element == id)){
+							return false
 						}
-					})){
+					})
 						let properarray;
+						let propperelement;
+						for (const array of robotBoard.cordToShip) {
+							propperelement = array.find((element) => element == id)
+							if (propperelement != undefined){
+								console.log("Success")
+								properarray = array;
+								break;
+							}
+						}
+						/*
 						robotBoard.cordToShip.forEach(array => {
-							properarray = array.find((element) => element == id)
-						})
+							propperelement = array.find((element) => element == id)
+							if (propperelement){
+								console.log("Success")
+								properarray = array;
+								return
+							}
+						})*/
 						properarray[1].forEach(cordobject => {
 							let x = cordobject.x;
 							let y = cordobject.y;
 							let targetDiv = document.querySelector(
-								`div[data-x='${x}'][data-y='${y + i}']`,
+								`#enemyboard div[data-x='${x}'][data-y='${y}']`,
 							);
 							targetDiv.style.backgroundColor = "red";
 						})
-					}
+					
 				});
 			}
 
